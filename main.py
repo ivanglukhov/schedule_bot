@@ -26,6 +26,7 @@ params_new_day_desc = [
 def add_new_day(message):
     global params_new_day_count
     if params_new_day_count == 3:
+        new_day[params_new_day_count] = message.text
         schedule1.create_day(new_day[0], new_day[1], new_day[2], new_day[3])
         bot.send_message(message.chat.id, text='Действие', reply_markup=keyboard)
     else:
@@ -33,7 +34,7 @@ def add_new_day(message):
         params_new_day_count += 1
         bot.send_message(message.chat.id, text=params_new_day_desc[params_new_day_count-1])
         bot.register_next_step_handler(message, add_new_day)
-        print(params_new_day_count, new_day)
+    print(params_new_day_count, new_day)
 
 
 @bot.message_handler(commands=['start'])
