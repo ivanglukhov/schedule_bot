@@ -32,6 +32,8 @@ class schedule():
 
 
 	def create_day(self, date, lessons_count, place, lessons):
+		print('INSERT INTO day(id,date,lessons_count,place,lessons)'+
+							f' VALUES({self.last_id}, "{date}",{lessons_count},"{place}","{lessons}")')
 		self.cursor.execute('INSERT INTO day(id,date,lessons_count,place,lessons)'+
 							f' VALUES({self.last_id}, "{date}",{lessons_count},"{place}","{lessons}")')
 		self.connection.commit()
